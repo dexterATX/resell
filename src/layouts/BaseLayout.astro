@@ -1,0 +1,89 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+const {
+  title,
+  description = 'Discounted airline tickets at one flat fare regardless of route.',
+} = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content="FLATFARE" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <div class="base-layout">
+      <div class="base-layout__mesh" aria-hidden="true">
+        <div class="mesh-background"></div>
+      </div>
+
+      <div class="base-layout__content">
+        <Header />
+        <slot />
+        <Footer />
+      </div>
+    </div>
+
+    <script is:inline>
+      const revealElements = document.querySelectorAll('.reveal');
+
+      if (!('IntersectionObserver' in window)) {
+        revealElements.forEach((element) => element.classList.add('is-visible', 'in-view'));
+      } else {
+        const revealObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+
+            entry.target.classList.add('is-visible', 'in-view');
+            revealObserver.unobserve(entry.target);
+          });
+        }, {
+          rootMargin: '0px 0px -8% 0px',
+          threshold: 0.12,
+        });
+
+        revealElements.forEach((element) => revealObserver.observe(element));
+      }
+    </script>
+  </body>
+</html>
+
+<style>
+  .base-layout {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .base-layout__mesh {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .base-layout__mesh > .mesh-background {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .base-layout__content {
+    position: relative;
+    z-index: var(--z-content);
+    min-height: 100vh;
+  }
+</style>
