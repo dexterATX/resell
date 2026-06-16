@@ -464,9 +464,11 @@
 </style>
 
 <script>
-  document.querySelectorAll('[data-faq-item]').forEach((item) => {
-    const button = item.querySelector('.pricing-cta__faq-button');
-    const panel = item.querySelector('.pricing-cta__faq-panel');
+  document.querySelectorAll<HTMLElement>('[data-faq-item]').forEach((item) => {
+    const button = item.querySelector<HTMLButtonElement>('.pricing-cta__faq-button');
+    const panel = item.querySelector<HTMLElement>('.pricing-cta__faq-panel');
+
+    if (!button || !panel) return;
 
     button.addEventListener('click', () => {
       const isOpen = item.classList.toggle('is-open');
