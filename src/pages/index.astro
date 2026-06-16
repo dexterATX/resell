@@ -1,29 +1,11 @@
 ---
-import '../styles/global.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Discounted airline tickets at one flat fare regardless of route." />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>FLATFARE | Discounted Flat-Rate Airline Tickets</title>
-  </head>
-  <body>
-    <main class="section">
-      <div class="mesh-background" aria-hidden="true"></div>
-      <section class="container glass-strong gradient-border" style="padding: var(--space-xl);">
-        <p class="eyebrow">Astro + Bun foundation</p>
-        <h1 class="gradient-text text-balance" style="margin-block-start: var(--space-md);">One flat fare. Every destination.</h1>
-        <p class="text-pretty" style="max-width: 58ch; margin-block-start: var(--space-md); font-size: var(--step-1);">
-          FLATFARE is a modern marketing site foundation for discounted airline ticket resale at one transparent flat rate, regardless of route.
-        </p>
-        <div style="display: flex; flex-wrap: wrap; gap: var(--space-xs); margin-block-start: var(--space-lg);">
-          <a class="btn btn-primary" href="#">Browse Deals</a>
-          <a class="btn btn-ghost" href="#">Design System Ready</a>
-        </div>
-      </section>
-    </main>
-  </body>
-</html>
+<BaseLayout title="FLATFARE — Flat-Rate Flight Deals" description="Discounted airline tickets at one flat fare regardless of route.">
+  <main class="section">
+    <div class="container">
+      <h1 class="gradient-text text-balance">One flat fare. Every destination.</h1>
+    </div>
+  </main>
+</BaseLayout>
