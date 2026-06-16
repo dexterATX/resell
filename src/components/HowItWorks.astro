@@ -1,0 +1,250 @@
+<section id="how-it-works" class="section how-it-works" aria-labelledby="how-it-works-title">
+  <div class="mesh-background how-it-works__mesh" aria-hidden="true"></div>
+
+  <div class="container">
+    <div class="how-it-works__header reveal">
+      <p class="eyebrow">How flat fare works</p>
+      <h2 id="how-it-works-title" class="text-balance">Book the trip first. The fare stays the same.</h2>
+      <p class="how-it-works__copy text-pretty">
+        FLATFARE turns complicated airline pricing into one simple discounted rate. Choose your destination,
+        lock in the fare, and fly with no surprise markups.
+      </p>
+    </div>
+
+    <ol class="how-it-works__steps">
+      <li class="how-it-works__step glass hover-lift reveal" style="--reveal-delay: 80ms">
+        <span class="how-it-works__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" role="img">
+            <path d="M24 44C35.046 44 44 35.046 44 24C44 12.954 35.046 4 24 4C12.954 4 4 12.954 4 24C4 35.046 12.954 44 24 44Z" stroke="url(#map-pin-gradient)" stroke-width="3"/>
+            <path d="M24 30C27.314 30 30 27.314 30 24C30 20.686 27.314 18 24 18C20.686 18 18 20.686 18 24C18 27.314 20.686 30 24 30Z" fill="url(#map-pin-gradient)"/>
+            <defs>
+              <linearGradient id="map-pin-gradient" x1="6" y1="6" x2="42" y2="42" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#7c3aed"/>
+                <stop offset="1" stop-color="#06b6d4"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </span>
+        <span class="how-it-works__number">1</span>
+        <h3>Pick your destination</h3>
+        <p>Search the route you want, then choose from curated seats where flat-rate inventory is available.</p>
+      </li>
+
+      <li class="how-it-works__step glass hover-lift reveal" style="--reveal-delay: 180ms">
+        <span class="how-it-works__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" role="img">
+            <path d="M14 20H34C36.209 20 38 21.791 38 24V34H10V24C10 21.791 11.791 20 14 20Z" stroke="url(#wallet-gradient)" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M18 20V16C18 12.686 20.686 10 24 10H34" stroke="url(#wallet-gradient)" stroke-width="3" stroke-linecap="round"/>
+            <path d="M34 27H34.01" stroke="#f8fafc" stroke-width="4" stroke-linecap="round"/>
+            <defs>
+              <linearGradient id="wallet-gradient" x1="10" y1="10" x2="38" y2="38" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#7c3aed"/>
+                <stop offset="1" stop-color="#06b6d4"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </span>
+        <span class="how-it-works__number">2</span>
+        <h3>Pay one flat rate</h3>
+        <p>One transparent price covers your discounted ticket regardless of distance, route, or demand spike.</p>
+      </li>
+
+      <li class="how-it-works__step glass hover-lift reveal" style="--reveal-delay: 280ms">
+        <span class="how-it-works__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" role="img">
+            <path d="M10 14H38V38H10V14Z" stroke="url(#ticket-gradient)" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M10 20H38" stroke="url(#ticket-gradient)" stroke-width="3"/>
+            <path d="M18 29H30" stroke="#f8fafc" stroke-width="3" stroke-linecap="round"/>
+            <defs>
+              <linearGradient id="ticket-gradient" x1="10" y1="14" x2="38" y2="38" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#7c3aed"/>
+                <stop offset="1" stop-color="#06b6d4"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </span>
+        <span class="how-it-works__number">3</span>
+        <h3>Get your ticket</h3>
+        <p>Receive a clean booking confirmation with the flat fare, route details, and next steps in one place.</p>
+      </li>
+
+      <li class="how-it-works__step glass hover-lift reveal" style="--reveal-delay: 380ms">
+        <span class="how-it-works__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" role="img">
+            <path d="M7 29L40 14L34 40L24 31L7 29Z" stroke="url(#plane-gradient)" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M24 31L40 14" stroke="url(#plane-gradient)" stroke-width="3" stroke-linecap="round"/>
+            <path d="M14 34L24 31" stroke="url(#plane-gradient)" stroke-width="3" stroke-linecap="round"/>
+            <defs>
+              <linearGradient id="plane-gradient" x1="7" y1="14" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#7c3aed"/>
+                <stop offset="1" stop-color="#06b6d4"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </span>
+        <span class="how-it-works__number">4</span>
+        <h3>Fly</h3>
+        <p>Board with confidence knowing your ticket price was locked before traditional fares climbed higher.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<style>
+  .how-it-works {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .how-it-works__mesh {
+    opacity: 0.55;
+  }
+
+  .how-it-works__header {
+    display: grid;
+    gap: var(--space-xs);
+    max-width: 54rem;
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .how-it-works__copy {
+    max-width: 48rem;
+    margin-inline: auto;
+    color: var(--color-fog);
+    font-size: var(--step-1);
+  }
+
+  .how-it-works__steps {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--space-sm);
+    margin-block-start: var(--space-xl);
+    padding: 0;
+    list-style: none;
+    counter-reset: step;
+  }
+
+  .how-it-works__step {
+    display: grid;
+    grid-template-rows: auto auto auto 1fr;
+    gap: var(--space-xs);
+    min-height: 22rem;
+    padding: clamp(1.1rem, 1.7vw, 1.55rem);
+    overflow: hidden;
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+
+  .how-it-works__step::before {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    content: "";
+    opacity: 0;
+    background:
+      radial-gradient(circle at 50% 0%, rgb(6 182 212 / 0.24), transparent 42%),
+      linear-gradient(135deg, rgb(124 58 237 / 0.18), transparent 58%);
+    transition: opacity var(--duration-base) var(--ease-out);
+  }
+
+  .how-it-works__step:hover::before {
+    opacity: 1;
+  }
+
+  .how-it-works__icon {
+    display: grid;
+    width: clamp(3.5rem, 5vw, 4.6rem);
+    aspect-ratio: 1;
+    place-items: center;
+    border-radius: var(--radius-xl);
+    background:
+      linear-gradient(135deg, rgb(255 255 255 / 0.16), rgb(255 255 255 / 0.04)),
+      rgb(124 58 237 / 0.12);
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.12), 0 18px 42px rgb(124 58 237 / 0.18);
+  }
+
+  .how-it-works__icon svg {
+    width: 72%;
+    height: 72%;
+    filter: drop-shadow(0 12px 22px rgb(6 182 212 / 0.2));
+  }
+
+  .how-it-works__number {
+    width: fit-content;
+    border-radius: var(--radius-full);
+    padding: 0.18rem 0.7rem;
+    background: var(--gradient-primary);
+    color: var(--color-soft-white);
+    font-family: var(--font-display);
+    font-size: clamp(1.35rem, 2vw, 2rem);
+    font-weight: 800;
+    letter-spacing: -0.06em;
+    box-shadow: var(--shadow-glow);
+  }
+
+  .how-it-works__step h3 {
+    font-size: clamp(1.35rem, 2vw, 2rem);
+    line-height: 1;
+  }
+
+  .how-it-works__step p {
+    color: var(--color-fog);
+    font-size: var(--step-0);
+  }
+
+  @media (max-width: 64rem) {
+    .how-it-works__steps {
+      grid-template-columns: 1fr;
+    }
+
+    .how-it-works__step {
+      min-height: auto;
+    }
+
+    .how-it-works__step:not(:last-child)::after {
+      position: absolute;
+      inset-inline: 2.2rem;
+      bottom: -1.1rem;
+      height: 2.2rem;
+      content: "";
+      background: linear-gradient(180deg, transparent, rgb(6 182 212 / 0.22), transparent);
+      mask: radial-gradient(circle at 50% 50%, transparent 48%, black 49%) center / 100% 100% no-repeat;
+    }
+  }
+
+  @media (min-width: 64.01rem) {
+    .how-it-works__steps::before {
+      position: absolute;
+      top: clamp(4.8rem, 8vw, 6.8rem);
+      left: calc(var(--container-padding) + 12%);
+      right: calc(var(--container-padding) + 12%);
+      height: 2px;
+      content: "";
+      background: linear-gradient(90deg, transparent, rgb(6 182 212 / 0.42), rgb(124 58 237 / 0.42), transparent);
+    }
+  }
+
+  @media (max-width: 42rem) {
+    .how-it-works__header h2 {
+      font-size: var(--step-4);
+    }
+
+    .how-it-works__step {
+      border-radius: var(--radius-lg);
+    }
+  }
+</style>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.18 });
+
+  document.querySelectorAll('.how-it-works .reveal').forEach((element) => observer.observe(element));
+</script>

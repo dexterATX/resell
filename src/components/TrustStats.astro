@@ -1,0 +1,224 @@
+<section id="trust-stats" class="section trust-stats" aria-labelledby="trust-stats-title">
+  <div class="trust-stats__mesh" aria-hidden="true"></div>
+
+  <div class="container">
+    <div class="trust-stats__header reveal">
+      <p class="eyebrow">Why travelers trust flat fare</p>
+      <h2 id="trust-stats-title" class="text-balance">The same low fare, backed by serious travel demand.</h2>
+      <p class="trust-stats__copy text-pretty">
+        A transparent flat-rate marketplace makes discounted airfare easier to compare, easier to understand,
+        and easier to book.
+      </p>
+    </div>
+
+    <div class="trust-stats__grid">
+      <article class="trust-stats__card glass hover-lift reveal" style="--reveal-delay: 80ms">
+        <span class="trust-stats__value" data-counter data-target="500" data-suffix="+">0+</span>
+        <span class="trust-stats__label">Destinations</span>
+        <p>Routes across domestic and international travel markets.</p>
+      </article>
+
+      <article class="trust-stats__card glass hover-lift reveal" style="--reveal-delay: 180ms">
+        <span class="trust-stats__value" data-counter data-target="0" data-prefix="$">$0</span>
+        <span class="trust-stats__label">Hidden Fees</span>
+        <p>No bait-and-switch pricing, no surprise checkout markups.</p>
+      </article>
+
+      <article class="trust-stats__card glass hover-lift reveal" style="--reveal-delay: 280ms">
+        <span class="trust-stats__value" data-counter data-target="50" data-suffix="k+">0k+</span>
+        <span class="trust-stats__label">Happy Travelers</span>
+        <p>Bookers who chose simple, predictable ticket pricing.</p>
+      </article>
+
+      <article class="trust-stats__card glass hover-lift reveal" style="--reveal-delay: 380ms">
+        <span class="trust-stats__value" data-counter data-target="4.9" data-decimals="1" data-suffix="★">0★</span>
+        <span class="trust-stats__label">Average Rating</span>
+        <p>High marks for clarity, savings, and fast booking flow.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+  .trust-stats {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .trust-stats__mesh {
+    position: absolute;
+    inset: 12% -12% auto auto;
+    z-index: -1;
+    width: clamp(18rem, 32vw, 34rem);
+    aspect-ratio: 1;
+    border-radius: var(--radius-full);
+    background: var(--gradient-warm-soft);
+    filter: blur(80px);
+    opacity: 0.72;
+    animation: trust-stats__pulse 7s var(--ease-out) infinite alternate;
+  }
+
+  .trust-stats__header {
+    display: grid;
+    gap: var(--space-xs);
+    max-width: 52rem;
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .trust-stats__copy {
+    max-width: 44rem;
+    margin-inline: auto;
+    color: var(--color-fog);
+    font-size: var(--step-1);
+  }
+
+  .trust-stats__grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--space-sm);
+    margin-block-start: var(--space-xl);
+  }
+
+  .trust-stats__card {
+    display: grid;
+    gap: var(--space-xs);
+    min-height: 16rem;
+    padding: clamp(1.2rem, 2vw, 1.8rem);
+    overflow: hidden;
+    text-align: center;
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+
+  .trust-stats__card::before {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    content: "";
+    background:
+      radial-gradient(circle at 50% 0%, rgb(251 191 36 / 0.16), transparent 38%),
+      radial-gradient(circle at 100% 100%, rgb(6 182 212 / 0.16), transparent 42%);
+    opacity: 0;
+    transition: opacity var(--duration-base) var(--ease-out);
+  }
+
+  .trust-stats__card:hover::before {
+    opacity: 1;
+  }
+
+  .trust-stats__value {
+    display: inline-flex;
+    align-items: baseline;
+    justify-content: center;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 7vw, 5.8rem);
+    font-weight: 800;
+    letter-spacing: -0.08em;
+    line-height: 0.92;
+    text-shadow: 0 0 44px rgb(6 182 212 / 0.18);
+  }
+
+  .trust-stats__label {
+    color: var(--color-soft-white);
+    font-family: var(--font-display);
+    font-size: clamp(1rem, 1.2vw, 1.2rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .trust-stats__card p {
+    color: var(--color-fog);
+    font-size: var(--step--1);
+  }
+
+  @media (max-width: 62rem) {
+    .trust-stats__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 38rem) {
+    .trust-stats__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .trust-stats__card {
+      min-height: auto;
+    }
+  }
+
+  @keyframes trust-stats__pulse {
+    from {
+      transform: translate3d(0, 0, 0) scale(0.96);
+      opacity: 0.55;
+    }
+
+    to {
+      transform: translate3d(-2rem, 2rem, 0) scale(1.06);
+      opacity: 0.86;
+    }
+  }
+</style>
+
+<script>
+  const formatNumber = (value, decimals) => Number(value).toLocaleString(undefined, {
+    minimumFractionDigits: decimals,
+    maximumFractionDigits: decimals,
+  });
+
+  const animateCounter = (element) => {
+    if (element.dataset.animated === 'true') return;
+
+    element.dataset.animated = 'true';
+
+    const target = Number(element.dataset.target || 0);
+    const decimals = Number(element.dataset.decimals || 0);
+    const prefix = element.dataset.prefix || '';
+    const suffix = element.dataset.suffix || '';
+    const duration = 1400;
+    const startTime = performance.now();
+
+    const tick = (now) => {
+      const progress = Math.min((now - startTime) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 4);
+      const current = target * eased;
+
+      element.textContent = `${prefix}${formatNumber(current, decimals)}${suffix}`;
+
+      if (progress < 1) {
+        requestAnimationFrame(tick);
+      } else {
+        element.textContent = `${prefix}${formatNumber(target, decimals)}${suffix}`;
+      }
+    };
+
+    requestAnimationFrame(tick);
+  };
+
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target);
+        counterObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.45 });
+
+  document.querySelectorAll('[data-counter]').forEach((counter) => counterObserver.observe(counter));
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.18 });
+
+  document.querySelectorAll('.trust-stats .reveal').forEach((element) => revealObserver.observe(element));
+</script>
