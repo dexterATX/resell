@@ -1,0 +1,21 @@
+{
+  "name": "flatfare-astro",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "bunx --bun astro dev",
+    "build": "astro build",
+    "preview": "bunx --bun astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@fontsource-variable/inter": "latest",
+    "@fontsource/sora": "latest",
+    "@fontsource/space-grotesk": "latest",
+    "@tailwindcss/vite": "latest",
+    "astro": "latest",
+    "tailwindcss": "latest"
+  },
+  "devDependencies": {}
+}
