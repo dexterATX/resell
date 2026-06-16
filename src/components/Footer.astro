@@ -1,0 +1,252 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <div class="site-footer__top">
+      <div class="site-footer__brand">
+        <a class="site-footer__logo" href="/" aria-label="FLATFARE home">FLATFARE</a>
+        <p>Discounted flat-rate flights without fare roulette.</p>
+      </div>
+
+      <form class="site-footer__newsletter glass" onsubmit="return false">
+        <label for="footer-email">Get flat fare alerts</label>
+        <div class="site-footer__email-row">
+          <input id="footer-email" type="email" placeholder="you@example.com" autocomplete="email" aria-label="Email address" />
+          <button class="btn btn-primary" type="button">Notify Me</button>
+        </div>
+        <p>No spam — only route drops and fare resets.</p>
+      </form>
+    </div>
+
+    <div class="site-footer__columns">
+      <section>
+        <h2>Company</h2>
+        <a href="#">About</a>
+        <a href="#">Careers</a>
+        <a href="#">Press</a>
+      </section>
+
+      <section>
+        <h2>Support</h2>
+        <a href="#">Help Center</a>
+        <a href="#">Contact</a>
+        <a href="#">Travel Tips</a>
+      </section>
+
+      <section>
+        <h2>Legal</h2>
+        <a href="#">Terms</a>
+        <a href="#">Privacy</a>
+        <a href="#">Accessibility</a>
+      </section>
+    </div>
+
+    <div class="site-footer__bottom">
+      <nav class="site-footer__social" aria-label="Social links">
+        <a href="#" aria-label="FLATFARE on Instagram">Instagram</a>
+        <a href="#" aria-label="FLATFARE on X">X</a>
+        <a href="#" aria-label="FLATFARE on TikTok">TikTok</a>
+      </nav>
+
+      <p>© {currentYear} FLATFARE. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    position: relative;
+    z-index: var(--z-content);
+    padding-block: var(--space-2xl) var(--space-lg);
+    color: var(--color-fog);
+  }
+
+  .site-footer::before {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    content: "";
+    background:
+      radial-gradient(circle at 18% 18%, rgb(124 58 237 / 0.2), transparent 30%),
+      radial-gradient(circle at 86% 72%, rgb(6 182 212 / 0.16), transparent 28%),
+      linear-gradient(180deg, transparent, rgb(5 5 18 / 0.5));
+  }
+
+  .site-footer__inner {
+    display: grid;
+    gap: var(--space-xl);
+  }
+
+  .site-footer__top {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(18rem, 0.72fr);
+    gap: var(--space-lg);
+    align-items: start;
+  }
+
+  .site-footer__brand {
+    display: grid;
+    gap: var(--space-xs);
+    max-width: 34rem;
+  }
+
+  .site-footer__logo {
+    width: fit-content;
+    border-radius: var(--radius-full);
+    color: var(--color-soft-white);
+    font-family: var(--font-display);
+    font-size: clamp(1.35rem, 3vw, 2rem);
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .site-footer__brand p {
+    color: var(--color-fog);
+    font-size: var(--step-1);
+  }
+
+  .site-footer__newsletter {
+    display: grid;
+    gap: var(--space-sm);
+    padding: var(--space-lg);
+    overflow: hidden;
+  }
+
+  .site-footer__newsletter::before {
+    position: absolute;
+    inset: -40% auto auto -20%;
+    width: 16rem;
+    aspect-ratio: 1;
+    border-radius: var(--radius-full);
+    content: "";
+    background: var(--gradient-primary-soft);
+    filter: blur(50px);
+    opacity: 0.55;
+  }
+
+  .site-footer__newsletter label,
+  .site-footer__newsletter p {
+    position: relative;
+    z-index: 1;
+  }
+
+  .site-footer__newsletter label {
+    color: var(--color-soft-white);
+    font-family: var(--font-display);
+    font-weight: 800;
+  }
+
+  .site-footer__email-row {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: var(--space-xs);
+  }
+
+  .site-footer__email-row input {
+    width: 100%;
+    min-height: 3rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    padding-inline: var(--space-sm);
+    background: rgb(255 255 255 / 0.06);
+    color: var(--color-soft-white);
+    outline: none;
+  }
+
+  .site-footer__email-row input::placeholder {
+    color: rgb(203 213 225 / 0.62);
+  }
+
+  .site-footer__email-row input:focus {
+    border-color: rgb(6 182 212 / 0.72);
+    box-shadow: 0 0 0 4px rgb(6 182 212 / 0.14);
+  }
+
+  .site-footer__columns {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-md);
+  }
+
+  .site-footer__columns section {
+    display: grid;
+    gap: var(--space-2xs);
+  }
+
+  .site-footer__columns h2 {
+    margin-block-end: var(--space-xs);
+    color: var(--color-soft-white);
+    font-size: var(--step-1);
+    letter-spacing: -0.02em;
+  }
+
+  .site-footer__columns a {
+    width: fit-content;
+    border-radius: var(--radius-md);
+    color: var(--color-fog);
+    text-decoration: none;
+    transition: color var(--duration-base) var(--ease-out);
+  }
+
+  .site-footer__columns a:hover {
+    color: var(--color-soft-white);
+  }
+
+  .site-footer__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+    padding-block-start: var(--space-lg);
+    border-top: 1px solid var(--color-border);
+    font-size: var(--step--1);
+  }
+
+  .site-footer__social {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+  }
+
+  .site-footer__social a {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    padding: 0.45rem 0.7rem;
+    color: var(--color-soft-white);
+    text-decoration: none;
+    transition: border-color var(--duration-base) var(--ease-out), background var(--duration-base) var(--ease-out);
+  }
+
+  .site-footer__social a:hover {
+    border-color: rgb(6 182 212 / 0.42);
+    background: rgb(6 182 212 / 0.1);
+  }
+
+  @media (max-width: 52rem) {
+    .site-footer__top,
+    .site-footer__columns {
+      grid-template-columns: 1fr;
+    }
+
+    .site-footer__bottom {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+
+  @media (max-width: 38rem) {
+    .site-footer__email-row {
+      grid-template-columns: 1fr;
+    }
+
+    .site-footer__email-row .btn {
+      width: 100%;
+    }
+  }
+</style>
