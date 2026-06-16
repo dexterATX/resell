@@ -1,0 +1,207 @@
+---
+import FlightCard from './FlightCard.astro';
+
+interface Deal {
+  route: string;
+  price: string;
+  originalPrice: string;
+  airline: string;
+  date: string;
+  time: string;
+  seats: string;
+}
+
+interface DealsGridProps {
+  title?: string;
+  eyebrow?: string;
+  copy?: string;
+  deals?: Deal[];
+}
+
+const defaultDeals: Deal[] = [
+  {
+    route: 'NYC → LON',
+    price: '$199',
+    originalPrice: '$640',
+    airline: 'Atlantic Resell',
+    date: 'Aug 12',
+    time: '7:40 PM',
+    seats: '6 seats left',
+  },
+  {
+    route: 'LAX → TYO',
+    price: '$229',
+    originalPrice: '$890',
+    airline: 'Pacific Flat',
+    date: 'Sep 03',
+    time: '11:15 AM',
+    seats: 'Limited seats',
+  },
+  {
+    route: 'MIA → CDG',
+    price: '$189',
+    originalPrice: '$710',
+    airline: 'SkyResell Select',
+    date: 'Aug 27',
+    time: '6:05 PM',
+    seats: '4 seats left',
+  },
+  {
+    route: 'SFO → DXB',
+    price: '$249',
+    originalPrice: '$1,020',
+    airline: 'Gulf Fare Club',
+    date: 'Oct 09',
+    time: '9:30 PM',
+    seats: 'Limited seats',
+  },
+];
+
+const {
+  title = 'Featured flat-rate flights',
+  eyebrow = 'This week’s fares',
+  copy = 'Real routes. Real airlines. One transparent flat fare that undercuts the regular ticket price.',
+  deals = defaultDeals,
+}: DealsGridProps = Astro.props as DealsGridProps;
+---
+
+<section class="deals-section" aria-labelledby="deals-heading">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">{eyebrow}</p>
+      <h2 id="deals-heading" class="gradient-text">{title}</h2>
+      <p>{copy}</p>
+    </div>
+    <a class="section-cta" href="#pricing">See flat-rate pricing</a>
+  </div>
+
+  <div class="deals-grid">
+    {
+      deals.map((deal: Deal) => (
+        <FlightCard
+          route={deal.route}
+          price={deal.price}
+          originalPrice={deal.originalPrice}
+          airline={deal.airline}
+          date={deal.date}
+          time={deal.time}
+          seats={deal.seats}
+        />
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .deals-section {
+    width: min(100% - 2rem, 76rem);
+    margin-inline: auto;
+    padding: clamp(4rem, 8vw, 7rem) 0;
+  }
+
+  .section-head {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+    gap: 2rem;
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+  }
+
+  .eyebrow {
+    margin: 0 0 0.8rem;
+    color: #0284c7;
+    font-size: 0.78rem;
+    font-weight: 950;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .gradient-text {
+    margin: 0;
+    max-width: 12ch;
+    font-size: clamp(2.35rem, 7vw, 5.3rem);
+    font-weight: 950;
+    line-height: 0.92;
+    letter-spacing: -0.08em;
+    background: linear-gradient(135deg, #0f172a 10%, #0ea5e9 42%, #7c3aed 72%, #16a34a);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .section-head > div > p:last-child {
+    max-width: 38rem;
+    margin: 1.1rem 0 0;
+    color: #475569;
+    font-size: clamp(1rem, 1.6vw, 1.18rem);
+    font-weight: 650;
+    line-height: 1.7;
+  }
+
+  .section-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 3rem;
+    border-radius: 9999px;
+    background: linear-gradient(135deg, #0ea5e9, #7c3aed);
+    padding: 0 1.25rem;
+    color: #fff;
+    font-size: 0.92rem;
+    font-weight: 900;
+    text-decoration: none;
+    box-shadow: 0 18px 44px rgba(124, 58, 237, 0.25);
+    transition: transform 180ms ease, box-shadow 180ms ease;
+  }
+
+  .section-cta:hover,
+  .section-cta:focus-visible {
+    transform: translateY(-2px);
+    box-shadow: 0 24px 56px rgba(14, 165, 233, 0.32);
+    outline: 3px solid rgba(14, 165, 233, 0.25);
+    outline-offset: 4px;
+  }
+
+  .deals-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  @media (max-width: 68rem) {
+    .section-head {
+      grid-template-columns: 1fr;
+      align-items: start;
+    }
+
+    .section-cta {
+      width: fit-content;
+    }
+
+    .deals-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 40rem) {
+    .deals-section {
+      width: min(100% - 1rem, 76rem);
+      padding-top: 3.5rem;
+      padding-bottom: 3.5rem;
+    }
+
+    .gradient-text {
+      max-width: 10ch;
+    }
+
+    .deals-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .section-cta {
+      transition: none;
+    }
+  }
+</style>

@@ -1,0 +1,204 @@
+---
+interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+interface FAQProps {
+  eyebrow?: string;
+  title?: string;
+  copy?: string;
+  items?: FaqItem[];
+}
+
+const defaultItems: FaqItem[] = [
+  {
+    question: 'How is the rate so low?',
+    answer: 'SkyResell bundles discounted airline inventory and passes the savings through one transparent flat fare instead of layering markups at checkout.',
+  },
+  {
+    question: 'Are the tickets legit and guaranteed?',
+    answer: 'Yes. Every booking is tied to verified airline inventory and confirmed ticket details before you fly.',
+  },
+  {
+    question: 'What about refunds or changes?',
+    answer: 'Refund and change rules follow the fare bundle and airline policy. SkyResell shows the terms clearly before payment.',
+  },
+  {
+    question: 'Can I choose seats?',
+    answer: 'Seat selection depends on the airline and fare bundle. When available, it can be added during booking.',
+  },
+  {
+    question: 'Is the flat fare the final price?',
+    answer: 'The flat fare includes the discounted ticket and required fees shown upfront. Optional extras like bags or seats are clearly separated.',
+  },
+];
+
+const {
+  eyebrow = 'FAQ',
+  title = 'Questions, answered flatly.',
+  copy = 'The flat-rate model is simple, but your questions deserve clear answers before you book.',
+  items = defaultItems,
+}: FAQProps = Astro.props as FAQProps;
+---
+
+<section class="faq-section" aria-labelledby="faq-heading">
+  <div class="faq-head">
+    <p class="eyebrow">{eyebrow}</p>
+    <h2 id="faq-heading" class="gradient-text">{title}</h2>
+    <p>{copy}</p>
+  </div>
+
+  <div class="faq-list">
+    {
+      items.map((item: FaqItem) => (
+        <details class="faq-item glass">
+          <summary>
+            <span>{item.question}</span>
+            <span aria-hidden="true">+</span>
+          </summary>
+          <div class="answer">
+            <p>{item.answer}</p>
+          </div>
+        </details>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .faq-section {
+    width: min(100% - 2rem, 76rem);
+    margin-inline: auto;
+    padding: clamp(4rem, 8vw, 7rem) 0;
+  }
+
+  .faq-head {
+    max-width: 44rem;
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+  }
+
+  .eyebrow {
+    margin: 0 0 0.8rem;
+    color: #0284c7;
+    font-size: 0.78rem;
+    font-weight: 950;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .gradient-text {
+    margin: 0;
+    font-size: clamp(2.35rem, 6.6vw, 5.1rem);
+    font-weight: 950;
+    line-height: 0.94;
+    letter-spacing: -0.08em;
+    background: linear-gradient(135deg, #0f172a 10%, #0ea5e9 44%, #7c3aed 78%, #16a34a);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .faq-head > p:last-child {
+    margin: 1rem 0 0;
+    color: #475569;
+    font-size: clamp(1rem, 1.5vw, 1.15rem);
+    font-weight: 650;
+    line-height: 1.7;
+  }
+
+  .faq-list {
+    display: grid;
+    gap: 0.85rem;
+  }
+
+  .faq-item {
+    border-radius: 1.25rem;
+    background:
+      linear-gradient(145deg, rgba(255, 255, 255, 0.84), rgba(240, 249, 255, 0.68)),
+      radial-gradient(circle at top right, rgba(14, 165, 233, 0.16), transparent 34%);
+    border: 1px solid rgba(14, 165, 233, 0.18);
+    box-shadow: 0 18px 50px rgba(15, 23, 42, 0.08);
+    backdrop-filter: blur(16px);
+    overflow: hidden;
+  }
+
+  summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.25rem;
+    padding: 1.15rem 1.25rem;
+    color: #0f172a;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 900;
+    line-height: 1.4;
+    list-style: none;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  summary > span:last-child {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 9999px;
+    background: rgba(14, 165, 233, 0.1);
+    color: #0284c7;
+    font-size: 1.25rem;
+    font-weight: 950;
+    line-height: 1;
+    transition: transform 180ms ease, background 180ms ease;
+  }
+
+  details[open] summary > span:last-child {
+    transform: rotate(45deg);
+    background: rgba(124, 58, 237, 0.12);
+    color: #7c3aed;
+  }
+
+  .answer {
+    padding: 0 1.25rem 1.25rem;
+    color: #475569;
+    font-size: 1rem;
+    font-weight: 650;
+    line-height: 1.7;
+  }
+
+  .answer p {
+    margin: 0;
+  }
+
+  summary:focus-visible {
+    outline: 3px solid rgba(14, 165, 233, 0.28);
+    outline-offset: -3px;
+  }
+
+  @media (max-width: 40rem) {
+    .faq-section {
+      width: min(100% - 1rem, 76rem);
+      padding-top: 3.5rem;
+      padding-bottom: 3.5rem;
+    }
+
+    summary {
+      padding: 1rem;
+    }
+
+    .answer {
+      padding: 0 1rem 1rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    summary > span:last-child {
+      transition: none;
+    }
+  }
+</style>
